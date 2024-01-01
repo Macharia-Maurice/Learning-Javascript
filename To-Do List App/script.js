@@ -4,6 +4,7 @@ const listContainer=document.getElementById("list-container");
 const button=document.querySelector("button");
 button.addEventListener("click",addTask);
 
+// function for adding new tasks to list
 function addTask(){
     if(inputBox.value===""){
         alert("You must write something");
@@ -20,6 +21,7 @@ function addTask(){
     saveData();
 }
 
+// function to handle checking of completion and deletion of tasks
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
@@ -32,10 +34,12 @@ listContainer.addEventListener("click", function(e){
     }
 },false);
 
+// maintain my list even when browser is refreshed (saving list in browser)
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
 }
 
+// load my saved list when browser is opened
 function showTask(){
     listContainer.innerHTML=localStorage.getItem("data");
 }
